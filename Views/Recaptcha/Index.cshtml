@@ -1,0 +1,26 @@
+﻿@{
+   Layout = null;
+   ViewData["Title"] = "Captcha Page";
+}
+@inject RecaptchaSecrets Secrets
+
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mosallas Google Captcha</title>
+   <!--! ATTENTION: hl parameter bellow specifies the language !-->
+   <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+</head>
+<body>
+   <div asp-validation-summary="All" class="text-danger"></div>
+
+   <form asp-action="Verify" method="post">
+      <div class="g-recaptcha" data-sitekey="@Secrets.SiteKey"></div>
+      <button type="submit">SUBMIT NOTHING XD</button>
+   </form>
+
+   @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+</body>
+</html>

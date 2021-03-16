@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoogleRecaptcha.Models;
 
 namespace GoogleRecaptcha
 {
@@ -24,6 +25,15 @@ namespace GoogleRecaptcha
       public void ConfigureServices(IServiceCollection services)
       {
          services.AddControllersWithViews();
+
+         var section = Configuration.GetSection("Recaptcha:Google");
+         var secrets = new RecaptchaSecrets
+         {
+            SiteKey = section["SiteKey"],
+            SecretKey =  section["SecretKey"]
+         };
+
+         services.AddSingleton(secrets);
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

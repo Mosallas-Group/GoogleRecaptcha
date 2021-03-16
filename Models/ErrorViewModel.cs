@@ -1,5 +1,3 @@
-using System;
-
 namespace GoogleRecaptcha.Models
 {
    public class ErrorViewModel

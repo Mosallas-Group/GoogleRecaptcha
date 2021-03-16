@@ -1,11 +1,7 @@
 ﻿using GoogleRecaptcha.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoogleRecaptcha.Controllers
 {
@@ -18,8 +14,9 @@ namespace GoogleRecaptcha.Controllers
          _logger = logger;
       }
 
-      public IActionResult Index()
+      public IActionResult Index(string message = "")
       {
+         ViewBag.Message = message;
          return View();
       }
 
